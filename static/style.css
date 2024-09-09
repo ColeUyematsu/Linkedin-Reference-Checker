@@ -1,0 +1,322 @@
+/* General body styles */
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navigation styles */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+/* Styles for the main container */
+.container {
+    margin: 20px;
+}
+
+/* Styles for headings */
+h2, h3 {
+    color: #333;
+}
+
+/* Styles for the employee list */
+.employee-list {
+    max-width: 100%;
+    overflow-x: auto; /* Ensures the table is scrollable on small screens */
+    margin: 20px 0; /* Spacing above and below the list */
+}
+
+.employee {
+    background-color: #fafafa; /* Light grey background for each entry */
+    border: 1px solid #e1e1e1; /* Light border for separation */
+    padding: 10px;
+    margin-bottom: 8px; /* Spacing between entries */
+    border-radius: 5px; /* Rounded corners for aesthetics */
+}
+
+.employee strong {
+    color: #000; /* Bold and dark color for names and titles */
+    display: block; /* Ensures names appear on new line */
+    margin-bottom: 5px; /* Space below the name */
+}
+
+.employee a {
+    color: #0275d8; /* Bootstrap primary color for links */
+    text-decoration: none; /* No underline */
+}
+
+.employee a:hover {
+    text-decoration: underline; /* Underline on hover for better interaction */
+}
+
+.delete-button {
+    background-color: #ff4136; /* Bright color for delete button */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #e74c3c; /* Slightly darker on hover */
+}
+
+/* Styles for collapsible content and buttons */
+/* Styles for collapsible buttons */
+.collapsible {
+    background-color: #f0f0f0; /* Lighter background instead of grey */
+    color: #333; /* Dark grey text for better readability */
+    cursor: pointer;
+    padding: 10px 18px; /* Reduced padding for less height */
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ddd; /* Subtle bottom border */
+    text-align: left;
+    outline: none;
+    font-size: 14px; /* Smaller font size */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.collapsible:hover, .collapsible.active {
+    background-color: #e8e8e8; /* Slightly darker on hover and when active */
+}
+
+/* Styles for the content under each collapsible button */
+.content {
+    padding: 8px 18px; /* Reduced padding */
+    display: none;
+    overflow: hidden;
+    background-color: #fff; /* White background for the content */
+    font-size: 13px; /* Smaller font size for content */
+    border-bottom: 1px solid #ddd; /* Consistent with button styling */
+}
+
+/* General list styling */
+ul {
+    list-style-type: none; /* Removes bullets */
+    padding: 0; /* Removes padding */
+    margin: 0; /* Removes margin */
+}
+
+/* Styles for list items */
+li {
+    margin-bottom: 5px; /* Reduced space between items */
+}
+
+.check-reference-container {
+    background-color: #fafafa; /* Light grey background */
+    border: 1px solid #e1e1e1; /* Light border */
+    padding: 10px; /* Spacing inside the form */
+    margin-bottom: 20px; /* Margin below the section */
+    border-radius: 5px; /* Rounded corners */
+    max-width: 100%; /* Full width */
+}
+
+.check-reference-container input[type="text"] {
+    width: 100%; /* Full width input */
+    padding: 10px; /* Consistent padding */
+    margin-bottom: 10px; /* Space between the input and button */
+    box-sizing: border-box;
+}
+
+.check-reference-container button {
+    width: 100%; /* Full width button */
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #ddd; /* Match button style to Add Employees section */
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.check-reference-container button:hover {
+    background-color: #ccc; /* Slight hover effect */
+}
+
+@media (max-width: 600px) {
+    .check-reference-container {
+        margin: 10px;
+        padding: 10px;
+    }
+}
+
+/* Align Add Employees form with Current Employees styling */
+.add-employee-container {
+    background-color: #fafafa; /* Same light grey background */
+    border: 1px solid #e1e1e1; /* Same light border */
+    padding: 10px; /* Spacing within the form */
+    margin-bottom: 20px; /* Space between sections */
+    border-radius: 5px; /* Rounded corners */
+    max-width: 100%; /* Full width */
+}
+
+.add-employee-container input[type="text"] {
+    width: 100%; /* Full width input */
+    padding: 10px; /* Same padding as employee buttons */
+    margin-bottom: 10px; /* Spacing between input fields */
+    box-sizing: border-box;
+}
+
+.add-employee-container button {
+    background-color: #ddd; /* Match the background color */
+    color: #333; /* Darker text for readability */
+    border: 1px solid #ccc; /* Consistent border style */
+    width: 48%; /* Half width for buttons */
+    padding: 10px;
+    border-radius: 5px; /* Consistent rounded corners */
+    cursor: pointer;
+    text-align: center;
+    margin-right: 2%; /* Small space between buttons */
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.add-employee-container button:hover {
+    background-color: #ccc; /* Same hover effect as other buttons */
+}
+
+.add-employee-container button:last-child {
+    margin-right: 0; /* Remove right margin from the last button */
+}
+/* Login Page Styling */
+.login-container {
+    background-color: #fafafa; /* Light grey background */
+    padding: 20px;
+    margin: 0 auto 20px; /* Centered with margin */
+    border-radius: 8px;
+    max-width: 500px; /* Set maximum width to keep the form compact */
+    text-align: center;
+}
+
+.login-container input[type="email"], 
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.login-container button:hover {
+    background-color: #ccc; /* Slight hover effect */
+}
+
+.login-container p {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.login-container a {
+    color: #0275d8;
+    text-decoration: none;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+/* Navigation styles with Flexbox for full-width even spacing */
+nav ul {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Distribute buttons evenly across the width */
+    list-style-type: none; /* Removes bullet points */
+    padding: 0;
+    margin: 20px 0; /* Adds some space around the navigation */
+    width: 100%; /* Make sure the nav takes full width */
+}
+
+nav ul li {
+    flex: 1; /* Each item takes equal space */
+    margin: 0 10px; /* Adds space between the buttons */
+}
+
+nav ul li a {
+    display: block;
+    padding: 10px 20px; /* Similar padding to the buttons */
+    background-color: #ddd; /* Grey background */
+    color: black; /* Black text */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 5px; /* Rounded corners */
+    text-align: center; /* Center the text in the button */
+    text-decoration: none; /* Remove underline */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+nav ul li a:hover {
+    background-color: #ccc; /* Darker grey on hover */
+}
+
+/* Collapsible button styling for shared experiences */
+.collapsible {
+    background-color: #f0f0f0; /* Lighter background */
+    color: #333; /* Dark grey text for better readability */
+    cursor: pointer;
+    padding: 10px 18px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ddd; /* Subtle bottom border */
+    text-align: left;
+    outline: none;
+    font-size: 14px; /* Smaller font size */
+    transition: background-color 0.3s ease;
+}
+
+.collapsible:hover, .collapsible.active {
+    background-color: #e8e8e8; /* Slightly darker on hover and when active */
+}
+
+/* Hidden content for each shared experience */
+.content {
+    padding: 8px 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #fff;
+    font-size: 13px;
+    border-bottom: 1px solid #ddd; /* Consistent with button styling */
+}
+
+.url-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.url-input input[type="text"] {
+    flex: 3; /* Takes up more space compared to the delete button */
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.delete-url {
+    flex: 1; /* Smaller size for delete button */
+    background-color: #ddd; /* Match the background color */
+    color: #333; /* Darker text for readability */
+    border: 1px solid #ccc; /* Consistent border style */
+    padding: 10px; /* Same padding as other buttons */
+    border-radius: 5px; /* Consistent rounded corners */
+    cursor: pointer;
+    text-align: center;
+    box-sizing: border-box; /* Ensure consistent box model */
+}
+
+.delete-url:hover {
+    background-color: #ccc; /* Same hover effect as other buttons */
+}
+

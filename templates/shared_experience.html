@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Shared Experiences</h2>
+
+<!-- Display New Employee's Job Title once -->
+<p><strong>Employees:</strong></p>
+
+<ul>
+    {% for experience in shared_experiences %}
+    <li>
+        <a href="{{ experience['LinkedIn URL'] }}" target="_blank">{{ experience['Employee Name'] }}</a> - 
+        {{ experience['Company'] }} ({{ experience['Shared Start Date'] }} - 
+        {% if experience['Shared End Date'] == datetime.now().strftime('%Y-%m-%d') %}
+        {% else %}
+            {{ experience['Shared End Date'] }}
+        {% endif %})
+        <br>
+        Existing Employee's Job Title: {{ experience['Shared Job Title'] }}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
