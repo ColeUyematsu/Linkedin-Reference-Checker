@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <!-- Render Navbar only if not on login/register -->
     {% if not request.endpoint in ['main.login', 'main.register'] %}
     <nav>
         <ul>
@@ -21,7 +22,12 @@
     </nav>
     {% endif %}
     
+    <!-- Only use the container for non-login/register pages -->
+    {% if not request.endpoint in ['main.login', 'main.register'] %}
     <div class="container">
+    {% endif %}
+    
+        <!-- Flash Messages -->
         {% with messages = get_flashed_messages(with_categories=True) %}
             {% if messages %}
                 {% for category, message in messages %}
@@ -29,7 +35,11 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
+        
         {% block content %}{% endblock %}
+    
+    {% if not request.endpoint in ['main.login', 'main.register'] %}
     </div>
+    {% endif %}
 </body>
 </html>

@@ -1,225 +1,150 @@
 /* General body styles */
 body {
     font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Full viewport height */
+    background: url('../static/images/background.jpg') no-repeat center center fixed;
+    background-size: cover; /* Scale image to cover the screen */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-/* Navigation styles */
+/* Overlay for readability */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white overlay */
+    z-index: -1; /* Place behind content */
+}
+
+/* Navigation Bar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9); /* Dark navbar */
+    padding: 15px 20px;
+    z-index: 10;
+}
+
 nav ul {
-    list-style-type: none;
+    display: flex;
+    align-items: center; /* Center vertically */
+    list-style: none;
     padding: 0;
+    margin: 0;
+    gap: 15px; /* Spacing between nav items */
 }
 
 nav ul li {
-    display: inline;
-    margin-right: 10px;
+    margin: 0; /* Remove default margin */
 }
 
-/* Styles for the main container */
+/* Push the logout button to the far right */
+nav ul li:last-child {
+    margin-left: auto; /* Pushes the last item to the right */
+    padding-right: 40px;
+}
+
+/* Navbar Links */
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+/* Hide navbar for login and register pages */
+nav.hidden {
+    display: none;
+}
+
+/* Main Content Containers */
 .container {
-    margin: 20px;
+    margin: 80px auto; /* Spacing below navbar */
+    padding: 20px;
+    max-width: 1200px; /* Keep within bounds */
+    background-color: rgba(255, 255, 255, 0.8); /* Light background */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
-/* Styles for headings */
-h2, h3 {
-    color: #333;
+/* Login/Signup Container - Square in the Middle */
+.login-container {
+    width: 600px; /* Increased width */
+    height: 600px; /* Increased height */
+    padding: 50px; /* More padding inside */
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    border-radius: 15px; /* Slightly larger rounded corners */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Bigger shadow */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Perfect centering */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center vertically and horizontally */
 }
 
-/* Styles for the employee list */
-.employee-list {
-    max-width: 100%;
-    overflow-x: auto; /* Ensures the table is scrollable on small screens */
-    margin: 20px 0; /* Spacing above and below the list */
+/* Center headings inside the container */
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 30px; /* Increased spacing */
+    font-size: 32px; /* Larger heading size */
+    color: #333; /* Dark text */
 }
 
-.employee {
-    background-color: #fafafa; /* Light grey background for each entry */
-    border: 1px solid #e1e1e1; /* Light border for separation */
-    padding: 10px;
-    margin-bottom: 8px; /* Spacing between entries */
-    border-radius: 5px; /* Rounded corners for aesthetics */
+/* Form styling */
+.login-container form {
+    width: 100%; /* Full width inside the container */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* More spacing between elements */
 }
 
-.employee strong {
-    color: #000; /* Bold and dark color for names and titles */
-    display: block; /* Ensures names appear on new line */
-    margin-bottom: 5px; /* Space below the name */
+/* Input fields for email and password */
+.login-container input[type="email"],
+.login-container input[type="password"] {
+    width: 100%; /* Match container width */
+    padding: 15px; /* Larger padding */
+    font-size: 20px; /* Bigger font size */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 8px; /* Slightly larger rounded corners */
+    box-sizing: border-box; /* Ensure consistent sizing */
 }
 
-.employee a {
-    color: #0275d8; /* Bootstrap primary color for links */
-    text-decoration: none; /* No underline */
-}
-
-.employee a:hover {
-    text-decoration: underline; /* Underline on hover for better interaction */
-}
-
-.delete-button {
-    background-color: #ff4136; /* Bright color for delete button */
+/* Buttons (same width as input fields) */
+.login-container button {
+    width: 100%; /* Match input width */
+    padding: 15px; /* Bigger buttons */
+    background-color: #0275d8; /* Primary blue */
     color: white;
     border: none;
-    padding: 5px 10px;
-    border-radius: 3px;
+    border-radius: 8px; /* Larger rounded corners */
+    font-size: 20px; /* Bigger font size */
     cursor: pointer;
-}
-
-.delete-button:hover {
-    background-color: #e74c3c; /* Slightly darker on hover */
-}
-
-/* Styles for collapsible content and buttons */
-/* Styles for collapsible buttons */
-.collapsible {
-    background-color: #f0f0f0; /* Lighter background instead of grey */
-    color: #333; /* Dark grey text for better readability */
-    cursor: pointer;
-    padding: 10px 18px; /* Reduced padding for less height */
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid #ddd; /* Subtle bottom border */
-    text-align: left;
-    outline: none;
-    font-size: 14px; /* Smaller font size */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.collapsible:hover, .collapsible.active {
-    background-color: #e8e8e8; /* Slightly darker on hover and when active */
-}
-
-/* Styles for the content under each collapsible button */
-.content {
-    padding: 8px 18px; /* Reduced padding */
-    display: none;
-    overflow: hidden;
-    background-color: #fff; /* White background for the content */
-    font-size: 13px; /* Smaller font size for content */
-    border-bottom: 1px solid #ddd; /* Consistent with button styling */
-}
-
-/* General list styling */
-ul {
-    list-style-type: none; /* Removes bullets */
-    padding: 0; /* Removes padding */
-    margin: 0; /* Removes margin */
-}
-
-/* Styles for list items */
-li {
-    margin-bottom: 5px; /* Reduced space between items */
-}
-
-.check-reference-container {
-    background-color: #fafafa; /* Light grey background */
-    border: 1px solid #e1e1e1; /* Light border */
-    padding: 10px; /* Spacing inside the form */
-    margin-bottom: 20px; /* Margin below the section */
-    border-radius: 5px; /* Rounded corners */
-    max-width: 100%; /* Full width */
-}
-
-.check-reference-container input[type="text"] {
-    width: 100%; /* Full width input */
-    padding: 10px; /* Consistent padding */
-    margin-bottom: 10px; /* Space between the input and button */
-    box-sizing: border-box;
-}
-
-.check-reference-container button {
-    width: 100%; /* Full width button */
-    padding: 10px;
-    box-sizing: border-box;
-    background-color: #ddd; /* Match button style to Add Employees section */
-    border: 1px solid #ccc;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.check-reference-container button:hover {
-    background-color: #ccc; /* Slight hover effect */
-}
-
-@media (max-width: 600px) {
-    .check-reference-container {
-        margin: 10px;
-        padding: 10px;
-    }
-}
-
-/* Align Add Employees form with Current Employees styling */
-.add-employee-container {
-    background-color: #fafafa; /* Same light grey background */
-    border: 1px solid #e1e1e1; /* Same light border */
-    padding: 10px; /* Spacing within the form */
-    margin-bottom: 20px; /* Space between sections */
-    border-radius: 5px; /* Rounded corners */
-    max-width: 100%; /* Full width */
-}
-
-.add-employee-container input[type="text"] {
-    width: 100%; /* Full width input */
-    padding: 10px; /* Same padding as employee buttons */
-    margin-bottom: 10px; /* Spacing between input fields */
-    box-sizing: border-box;
-}
-
-.add-employee-container button {
-    background-color: #ddd; /* Match the background color */
-    color: #333; /* Darker text for readability */
-    border: 1px solid #ccc; /* Consistent border style */
-    width: 48%; /* Half width for buttons */
-    padding: 10px;
-    border-radius: 5px; /* Consistent rounded corners */
-    cursor: pointer;
-    text-align: center;
-    margin-right: 2%; /* Small space between buttons */
-    margin-bottom: 10px;
-    box-sizing: border-box;
-}
-
-.add-employee-container button:hover {
-    background-color: #ccc; /* Same hover effect as other buttons */
-}
-
-.add-employee-container button:last-child {
-    margin-right: 0; /* Remove right margin from the last button */
-}
-/* Login Page Styling */
-.login-container {
-    background-color: #fafafa; /* Light grey background */
-    padding: 20px;
-    margin: 0 auto 20px; /* Centered with margin */
-    border-radius: 8px;
-    max-width: 500px; /* Set maximum width to keep the form compact */
-    text-align: center;
-}
-
-.login-container input[type="email"], 
-.login-container input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-}
-
-.login-container button {
-    width: 100%;
-    padding: 10px;
-    background-color: #ddd;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* Ensure consistent sizing */
 }
 
 .login-container button:hover {
-    background-color: #ccc; /* Slight hover effect */
+    background-color: #025aa5; /* Darker blue */
 }
 
+/* Links */
 .login-container p {
-    margin-top: 20px;
-    font-size: 14px;
+    text-align: center;
+    font-size: 16px; /* Slightly larger text */
+    margin-top: 20px; /* Adjusted spacing */
 }
 
 .login-container a {
@@ -231,92 +156,125 @@ li {
     text-decoration: underline;
 }
 
-/* Navigation styles with Flexbox for full-width even spacing */
-nav ul {
-    display: flex; /* Use flexbox for layout */
-    justify-content: space-between; /* Distribute buttons evenly across the width */
-    list-style-type: none; /* Removes bullet points */
-    padding: 0;
-    margin: 20px 0; /* Adds some space around the navigation */
-    width: 100%; /* Make sure the nav takes full width */
-}
-
-nav ul li {
-    flex: 1; /* Each item takes equal space */
-    margin: 0 10px; /* Adds space between the buttons */
-}
-
-nav ul li a {
-    display: block;
-    padding: 10px 20px; /* Similar padding to the buttons */
-    background-color: #ddd; /* Grey background */
-    color: black; /* Black text */
-    border: 1px solid #ccc; /* Light grey border */
-    border-radius: 5px; /* Rounded corners */
-    text-align: center; /* Center the text in the button */
-    text-decoration: none; /* Remove underline */
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Smooth hover effect */
-}
-
-nav ul li a:hover {
-    background-color: #ccc; /* Darker grey on hover */
-}
-
-/* Collapsible button styling for shared experiences */
-.collapsible {
-    background-color: #f0f0f0; /* Lighter background */
-    color: #333; /* Dark grey text for better readability */
-    cursor: pointer;
-    padding: 10px 18px;
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid #ddd; /* Subtle bottom border */
-    text-align: left;
-    outline: none;
-    font-size: 14px; /* Smaller font size */
-    transition: background-color 0.3s ease;
-}
-
-.collapsible:hover, .collapsible.active {
-    background-color: #e8e8e8; /* Slightly darker on hover and when active */
-}
-
-/* Hidden content for each shared experience */
-.content {
-    padding: 8px 18px;
+/* Hide navbar for login/register pages */
+nav.hidden {
     display: none;
-    overflow: hidden;
-    background-color: #fff;
-    font-size: 13px;
-    border-bottom: 1px solid #ddd; /* Consistent with button styling */
 }
-
+/* URL Input Section */
 .url-input {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    gap: 10px;
+    margin-bottom: 15px;
 }
 
 .url-input input[type="text"] {
-    flex: 3; /* Takes up more space compared to the delete button */
+    flex-grow: 1;
     padding: 10px;
-    margin-right: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
-.delete-url {
-    flex: 1; /* Smaller size for delete button */
-    background-color: #ddd; /* Match the background color */
-    color: #333; /* Darker text for readability */
-    border: 1px solid #ccc; /* Consistent border style */
-    padding: 10px; /* Same padding as other buttons */
-    border-radius: 5px; /* Consistent rounded corners */
+/* Buttons */
+button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
     cursor: pointer;
-    text-align: center;
-    box-sizing: border-box; /* Ensure consistent box model */
+    transition: all 0.3s ease;
 }
 
-.delete-url:hover {
-    background-color: #ccc; /* Same hover effect as other buttons */
+/* Primary Button (Blue) */
+button.primary {
+    background-color: #0275d8;
+    color: white;
 }
 
+button.primary:hover {
+    background-color: #025aa5;
+}
+
+/* Soft Danger Button (Red) */
+button.soft-danger {
+    padding: 10px 15px;
+    background-color: #f8d7da; /* Softer red */
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button.soft-danger:hover {
+    background-color: #f1b0b7;
+}
+
+/* Employee List */
+.employee-list {
+    margin-top: 20px;
+}
+
+.employee {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fafafa;
+    padding: 10px;
+    border: 1px solid #e1e1e1;
+    margin-bottom: 8px;
+    border-radius: 5px;
+}
+
+/* Collapsible Sections */
+.collapsible {
+    background-color: #f0f0f0;
+    padding: 10px 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.collapsible:hover {
+    background-color: #e8e8e8;
+}
+
+.content {
+    padding: 8px 18px;
+    display: none;
+    background-color: #fff;
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .button-container {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .login-container {
+        width: 90%; /* Smaller screens adapt */
+        height: auto;
+        padding: 40px;
+    }
+    .login-container h2{
+        font-size: 28px;
+    }
+    .login-container input,
+    .login-container button {
+        font-size: 18px; /* Scale down inputs/buttons */
+        padding: 12px; /* Smaller padding */
+    }
+}

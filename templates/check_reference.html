@@ -1,18 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="check-reference-container">
+<h2>Check Reference</h2>
+
+<!-- Check Reference Container -->
+<div class="container check-reference-container">
     <h3>Check Reference</h3>
     <form method="POST" action="{{ url_for('main.check_reference') }}" class="check-reference-form">
-        <input type="text" name="linkedin_url" placeholder="Enter LinkedIn URL" required>
-        <button type="submit">Check Reference</button>
+        <!-- Input Field -->
+        <div class="url-input">
+            <input 
+                type="text" 
+                name="linkedin_url" 
+                placeholder="Enter LinkedIn URL" 
+                required
+            >
+            <!-- Submit Button -->
+            <button type="submit" class="primary">Check Reference</button>
+        </div>
     </form>
+
+    <!-- Shared Experiences Section -->
     {% if shared_experiences %}
         <h3>Shared Experiences Found:</h3>
-        <ul>
+        <ul class="employee-list">
             {% for experience in shared_experiences %}
-            <li>
-                {{ experience['Existing Employee'] }} - {{ experience['Company'] }} 
+            <li class="employee">
+                <strong>{{ experience['Existing Employee'] }}</strong> - {{ experience['Company'] }} 
                 ({{ experience['Shared Start Date'] }} - {{ experience['Shared End Date'] }})
             </li>
             {% endfor %}
