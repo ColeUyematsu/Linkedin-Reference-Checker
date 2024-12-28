@@ -1,4 +1,4 @@
-from flask import render_template, url_for, flash, redirect, request
+from flask import render_template, url_for, flash, redirect, request, jsonify
 from flask_login import login_user, current_user, logout_user, login_required
 from models import db, User, Employee
 from linkedin_reference_checker import fetch_employee_data, check_shared_experience, fetch_linkedin_profiles, parse_dates, normalize_company_name, process_profile_data
@@ -6,6 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Blueprint
 import pandas as pd
 from datetime import datetime
+
 
 main = Blueprint('main', __name__)
 
@@ -256,3 +257,13 @@ def delete_employee(employee_id):
 def logout():
     logout_user()
     return redirect(url_for('main.login'))
+
+@main.route('/search', methods=['GET'])
+def search_employees():
+    query = request.args.get('q', '').lower()
+    # Perform a SQL query to find matches
+    results = Employee.query.filter(Employee.name.ilike(f'%{query}%')).limit(5).all()
+    
+    # Format results as JSON
+    output = [{"id": emp.id, "name": emp.name, "experience": emp.experience} for emp in results]
+    return jsonify(output)

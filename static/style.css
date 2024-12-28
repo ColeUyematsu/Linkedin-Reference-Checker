@@ -69,7 +69,7 @@ nav.hidden {
 
 /* Main Content Containers */
 .container {
-    margin: 80px auto; /* Spacing below navbar */
+    margin: 40px auto; /* Spacing below navbar */
     padding: 20px;
     max-width: 1200px; /* Keep within bounds */
     background-color: rgba(255, 255, 255, 0.8); /* Light background */
@@ -209,21 +209,82 @@ button.soft-danger {
 button.soft-danger:hover {
     background-color: #f1b0b7;
 }
-
-/* Employee List */
+/* General Employee List Styles */
 .employee-list {
     margin-top: 20px;
+    padding: 20px;
 }
 
-.employee {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #fafafa;
-    padding: 10px;
-    border: 1px solid #e1e1e1;
-    margin-bottom: 8px;
+/* Employee List Container */
+.employee-list ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none; /* Remove bullet points */
+}
+
+/* Employee List Item */
+.employee-list li {
+    width: 100%; /* Take full width */
+    padding: 0; /* Remove padding inside the box */
     border-radius: 5px;
+    margin-bottom: 10px; /* Space between list items */
+    background-color: #f8f9fa; /* Light background */
+    border: 1px solid #ddd; /* Add a border for separation */
+}
+
+/* Employee Entry - Dropdown Styling */
+.employee-entry {
+    width: 100%; /* Full width to align with input fields */
+    margin-bottom: 10px; /* Space between entries */
+}
+
+/* Employee Name Button - Full Width */
+.employee-name {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding inside the button */
+    font-size: 16px;
+    text-align: left; /* Left-aligned text */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box; /* Include padding and border */
+}
+
+.employee-name:hover {
+    background-color: #e8e8e8; /* Hover effect */
+}
+
+/* Dropdown Content */
+.dropdown-content {
+    display: none; /* Hidden initially */
+    width: 100%; /* Match parent width */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    box-sizing: border-box; /* Include padding and border */
+}
+
+/* Show dropdown when active */
+.dropdown-content.active {
+    display: block;
+}
+
+/* Delete Button in Dropdown */
+.dropdown-content button {
+    padding: 5px 10px;
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dropdown-content button:hover {
+    background-color: #c9302c;
 }
 
 /* Collapsible Sections */
@@ -241,6 +302,7 @@ button.soft-danger:hover {
     background-color: #e8e8e8;
 }
 
+/* Collapsible Content */
 .content {
     padding: 8px 18px;
     display: none;
@@ -252,6 +314,73 @@ button.soft-danger:hover {
     display: flex;
     justify-content: flex-start;
     gap: 10px;
+}
+
+/* Search Employees Container */
+.search-container {
+    margin: 20px auto; /* Consistent margin */
+    padding: 20px; /* Match padding with other containers */
+    max-width: 800px; /* Same width as input fields and dropdowns */
+    background-color: rgba(255, 255, 255, 0.8); /* Light background */
+    border-radius: 10px; /* Consistent rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Matching shadow */
+}
+
+/* Search Input Field */
+.search-container input[type="text"] {
+    width: 100%; /* Full width inside container */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Search Button */
+.search-container button {
+    padding: 10px 15px;
+    background-color: #0275d8; /* Primary button style */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-container button:hover {
+    background-color: #025aa5;
+}
+
+/* Search Results */
+#searchResults {
+    margin-top: 10px;
+    padding-left: 0;
+    list-style: none; 
+}
+
+#searchResults li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    background-color: #f8f9fa;
+}
+
+/* Delete Button in Search Results */
+#searchResults button.soft-danger {
+    padding: 5px 10px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: #f5c6cb;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#searchResults button.soft-danger:hover {
+    background-color: #c9302c;
 }
 
 /* Responsive Design */
@@ -269,12 +398,14 @@ button.soft-danger:hover {
         height: auto;
         padding: 40px;
     }
-    .login-container h2{
+
+    .login-container h2 {
         font-size: 28px;
     }
+
     .login-container input,
     .login-container button {
-        font-size: 18px; /* Scale down inputs/buttons */
-        padding: 12px; /* Smaller padding */
+        font-size: 18px;
+        padding: 12px;
     }
 }
