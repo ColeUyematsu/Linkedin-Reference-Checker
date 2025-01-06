@@ -45,6 +45,29 @@
     </form>
 </div>
 
+<!-- Upload File Section -->
+<div class="container upload-container">
+    <h3>Upload LinkedIn URLs File</h3>
+    <form method="POST" action="{{ url_for('main.upload_file') }}" enctype="multipart/form-data">
+        <div class="url-input">
+            <input 
+                type="file" 
+                name="file" 
+                accept=".txt,.csv" 
+                required
+            >
+        </div>
+        <div class="button-container">
+            <button 
+                type="submit" 
+                class="primary"
+            >
+                Upload File
+            </button>
+        </div>
+    </form>
+</div>
+
 <!-- Search Employees Section -->
 <div class="container add-employee-container">
     <h3>Search Employees</h3>
@@ -69,45 +92,6 @@
     <!-- Search Results -->
     <ul id="searchResults" class="list-group">
         <!-- Results will load here -->
-    </ul>
-</div>
-<!-- Employee List Section -->
-<div class="container employee-list">
-    <h3>Current Employees</h3>
-    <ul>
-        {% for employee in employees %}
-        <li class="employee">
-            <!-- Employee Entry -->
-            <div class="employee-entry">
-                <!-- Name as Dropdown Button -->
-                <div 
-                    class="employee-name dropdown-btn" 
-                    onclick="toggleDropdown('dropdown{{ employee.id }}')"
-                >
-                    {{ employee.name }}
-                </div>
-
-                <!-- Dropdown Menu -->
-                <div id="dropdown{{ employee.id }}" class="dropdown-content">
-                    <p>{{ employee.experience|safe }}</p>
-                    <!-- Delete Form -->
-                    <form 
-                        method="POST" 
-                        action="{{ url_for('main.delete_employee', employee_id=employee.id) }}" 
-                        style="margin-top: 10px;"
-                    >
-                        <button 
-                            type="submit" 
-                            class="soft-danger" 
-                            onclick="return confirm('Are you sure you want to delete this employee?');"
-                        >
-                            Delete
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </li>
-        {% endfor %}
     </ul>
 </div>
 

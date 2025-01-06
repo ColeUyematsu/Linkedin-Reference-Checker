@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Directory</h2>
+
+<div class="container employee-list">
+    <h3>Current Employees</h3>
+    <ul>
+        {% for employee in employees %}
+        <li class="employee">
+            <!-- Employee Entry -->
+            <div class="employee-entry">
+                <!-- Name as Dropdown Button -->
+                <div 
+                    class="employee-name dropdown-btn" 
+                    onclick="toggleDropdown('dropdown{{ employee.id }}')"
+                >
+                    {{ employee.name }}
+                </div>
+
+                <!-- Dropdown Menu -->
+                <div id="dropdown{{ employee.id }}" class="dropdown-content">
+                    <p>{{ employee.experience|safe }}</p>
+                    <!-- Delete Form -->
+                    <form 
+                        method="POST" 
+                        action="{{ url_for('main.delete_employee', employee_id=employee.id) }}" 
+                        style="margin-top: 10px;"
+                    >
+                        <button 
+                            type="submit" 
+                            class="soft-danger" 
+                            onclick="return confirm('Are you sure you want to delete this employee?');"
+                        >
+                            Delete
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+{% endblock %}

@@ -3,6 +3,7 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    padding-top: 70px; /* <-- Add this line to push the content below the navbar */
     height: 100vh; /* Full viewport height */
     background: url('../static/images/background.jpg') no-repeat center center fixed;
     background-size: cover; /* Scale image to cover the screen */
@@ -69,12 +70,21 @@ nav.hidden {
 
 /* Main Content Containers */
 .container {
-    margin: 40px auto; /* Spacing below navbar */
-    padding: 20px;
-    max-width: 1200px; /* Keep within bounds */
+    margin: 20px auto; /* Consistent spacing between containers */
+    padding: 20px; /* Consistent padding */
+    width: 90%; /* Full width responsiveness */
+    max-width: 1200px; /* Prevents it from being too wide */
     background-color: rgba(255, 255, 255, 0.8); /* Light background */
-    border-radius: 10px;
+    border-radius: 10px; /* Rounded corners */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Reduce section spacing inside the dashboard */
+.container + .container {
+    margin-top: 15px; /* Smaller gap between sections */
+}
+.main-container {
+    padding-top: 70px; /* Push down content below navbar */
 }
 
 /* Login/Signup Container - Square in the Middle */
@@ -211,7 +221,7 @@ button.soft-danger:hover {
 }
 /* General Employee List Styles */
 .employee-list {
-    margin-top: 20px;
+    margin-top: 5px;
     padding: 20px;
 }
 
@@ -318,12 +328,13 @@ button.soft-danger:hover {
 
 /* Search Employees Container */
 .search-container {
-    margin: 20px auto; /* Consistent margin */
+    margin: 20px auto; /* Consistent spacing */
     padding: 20px; /* Match padding with other containers */
-    max-width: 800px; /* Same width as input fields and dropdowns */
-    background-color: rgba(255, 255, 255, 0.8); /* Light background */
-    border-radius: 10px; /* Consistent rounded corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Matching shadow */
+    width: 90%;
+    max-width: 1200px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Search Input Field */
@@ -383,6 +394,29 @@ button.soft-danger:hover {
     background-color: #c9302c;
 }
 
+.upload-container {
+    padding: 20px; /* Consistent padding */
+    width: 90%; /* Full width responsiveness */
+    max-width: 1200px;
+    margin: 20px auto; /* Same spacing as others */
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.upload-container input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.upload-container button {
+    margin-top: none;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .button-container {
@@ -408,4 +442,8 @@ button.soft-danger:hover {
         font-size: 18px;
         padding: 12px;
     }
+}
+nav ul li a.active {
+    font-weight: bold;
+    border-bottom: 2px solid #0275d8; /* Highlight active tab */
 }

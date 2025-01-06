@@ -267,3 +267,43 @@ def search_employees():
     # Format results as JSON
     output = [{"id": emp.id, "name": emp.name, "experience": emp.experience} for emp in results]
     return jsonify(output)
+
+@main.route("/upload_file", methods=["POST"])
+@login_required
+def upload_file():
+    if 'file' not in request.files:
+        flash('No file uploaded!', 'danger')
+        return redirect(url_for('main.dashboard'))
+    
+    file = request.files['file']
+    if file.filename == '':
+        flash('No file selected!', 'danger')
+        return redirect(url_for('main.dashboard'))
+
+    if file:
+        # Read uploaded file
+        content = file.read().decode('utf-8')
+        urls = content.splitlines()
+
+        # Validate URLs
+        valid_urls = []
+        for url in urls:
+            if url.startswith("https://www.linkedin.com/"):
+                valid_urls.append(url)
+            else:
+                flash(f"Invalid URL skipped: {url}", "warning")
+
+        # Add employees from valid URLs
+        for url in valid_urls:
+            new_employee = Employee(url=url, owner=current_user)
+            db.session.add(new_employee)
+
+        db.session.commit()
+        flash(f"{len(valid_urls)} employees added successfully!", "success")
+        return redirect(url_for('main.dashboard'))
+
+@main.route("/database")
+@login_required
+def database():
+    employees = Employee.query.filter_by(owner=current_user).all()
+    return render_template('directory.html', employees=employees)
